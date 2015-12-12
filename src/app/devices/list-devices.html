@@ -6,28 +6,62 @@
 
     <div class="row" style="padding-top:25px;">
 
-        <!-- Start Vehicle -->
-        <div class="col-lg-3" ng-repeat="row in vm.object_list track by $index">
-            <div class="hpanel hgreen contact-panel">
-                <div class="panel-body">
-                    <span class="label label-success pull-right">NEW</span>
-                    <img alt="{{ row.photo.alt }}" class="img-circle m-b" src="{{ row.photo.url }}">
-                    <h3><a href=""> {{ row.name }} </a></h3>
-                    <div class="text-muted font-bold m-b-xs">{{ row.location }}</div>
-                    <p>
-                        {{ row.description }}
-                    </p>
-                </div>
-                <div class="panel-footer contact-footer">
-                    <div class="row">
-                        <div class="col-md-4 border-right"> <div class="contact-stat"><span>Temp: </span> <strong>{{ row.data.temp }}&#8451;</strong></div> </div>
-                        <div class="col-md-4 border-right"> <div class="contact-stat"><span>Humidity: </span> <strong>{{ row.data.humidity }}%</strong></div> </div>
-                        <div class="col-md-4"> <div class="contact-stat"><span>Weight: </span> <strong>{{ row.data.weight }}Kg</strong></div> </div>
+        <div class="col-lg-5">
+            <!-- Start Hives Vehicle -->
+            <div class="col-lg-12" ng-repeat="row in vm.hives_list track by $index">
+                <div class="hpanel hyellow contact-panel">
+                    <div class="panel-body">
+                        <!-- <span class="label label-warning pull-right">NEW</span> -->
+                        <img alt="{{ row.photo.alt }}" class="img-circle m-b" src="{{ row.photo.url }}">
+                        <h3><a href=""> {{ row.name }} </a></h3>
+                        <div class="text-muted font-bold m-b-xs">{{ row.location }}</div>
+                        <p>
+                            {{ row.description }}
+                        </p>
+                    </div>
+                    <div class="panel-footer contact-footer">
+                        <div class="row">
+                            <div class="col-md-4 border-right" ng-repeat="sensor in row.sensors track by $index">
+                                <div class="contact-stat">
+                                    <span>{{ sensor.type }}</span>
+                                    <strong ng-if="sensor.type != 'Video Stream'">{{ sensor.data.value }}</strong>
+                                    <img ng-src="{{ sensor.data.value }}" ng-if="sensor.type == 'Video Stream'" />
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+            <!-- END Hives Vehicle -->
         </div>
-        <!-- END Vehicle -->
+
+        <div class="col-lg-7">
+            <!-- Start Device Vehicle -->
+            <div class="col-lg-4" ng-repeat="sensor in vm.unassigned_devices_list track by $index">
+                <div class="hpanel hgreen contact-panel">
+                    <div class="panel-body">
+                        <span class="label label-success pull-right">{{ sensor.status }}</span>
+                        <h4><a href=""> {{ sensor.type }} </a></h4>
+                        <small class="text-muted font-bold m-b-xs">{{ sensor.id }}</small>
+                        <p>
+                            {{ sensor.description }}
+                        </p>
+                    </div>
+                    <div class="panel-footer contact-footer">
+                        <div class="row">
+                            <div class="col-md-12 border-right">
+                                <div class="contact-stat">
+                                    <span>Most recent: </span>
+                                    <strong ng-if="sensor.type != 'Video Stream'">{{ sensor.data.value }}</strong>
+                                    <img ng-src="{{ sensor.data.value }}" ng-if="sensor.type == 'Video Stream'" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Device Vehicle -->
+        </div>
 
     </div>
 
