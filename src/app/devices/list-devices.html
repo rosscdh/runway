@@ -1,0 +1,34 @@
+<div class="container" ng-controller="DeviceListController as vm">
+
+    <div>
+        <acme-navbar creation-date="main.creationDate"></acme-navbar>
+    </div>
+
+    <div class="row" style="padding-top:25px;">
+
+        <!-- Start Vehicle -->
+        <div class="col-lg-3" ng-repeat="row in vm.object_list track by $index">
+            <div class="hpanel hgreen contact-panel">
+                <div class="panel-body">
+                    <span class="label label-success pull-right">NEW</span>
+                    <img alt="{{ row.photo.alt }}" class="img-circle m-b" src="{{ row.photo.url }}">
+                    <h3><a href=""> {{ row.name }} </a></h3>
+                    <div class="text-muted font-bold m-b-xs">{{ row.location }}</div>
+                    <p>
+                        {{ row.description }}
+                    </p>
+                </div>
+                <div class="panel-footer contact-footer">
+                    <div class="row">
+                        <div class="col-md-4 border-right"> <div class="contact-stat"><span>Temp: </span> <strong>{{ row.data.temp }}&#8451;</strong></div> </div>
+                        <div class="col-md-4 border-right"> <div class="contact-stat"><span>Humidity: </span> <strong>{{ row.data.humidity }}%</strong></div> </div>
+                        <div class="col-md-4"> <div class="contact-stat"><span>Weight: </span> <strong>{{ row.data.weight }}Kg</strong></div> </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END Vehicle -->
+
+    </div>
+
+</div>

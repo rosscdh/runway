@@ -80,17 +80,25 @@
       // Hive - Dashboard
       // a view for a specific hives
       // ------------------------------------------
+      .state('hive-list', {
+        url: '/hives',
+        templateUrl: 'app/hives/list-hives.html',
+        controller: 'ListHivesController',
+        data: {
+          authorised: true
+        }
+      })
       .state('hive-dashboard', {
         url: '/hives/:hive',
         templateUrl: 'app/hives/dashboard.html',
-        controller: 'HiveDashboardController',
+        controller: 'DashboardHiveController',
         data: {
           authorised: true
         }
       })
       .state('create-hive', {
         url: '/hives/create',
-        templateUrl: 'app/hives/edit.html',
+        templateUrl: 'app/hives/edit-hive.html',
         controller: 'CreateHiveController',
         data: {
           authorised: true
@@ -98,7 +106,7 @@
       })
       .state('edit-hive', {
         url: '/hives/:hive',
-        templateUrl: 'app/hives/edit.html',
+        templateUrl: 'app/hives/edit-hive.html',
         controller: 'EditHiveController',
         data: {
           authorised: true
@@ -111,15 +119,15 @@
       // ------------------------------------------
       .state('device-list', {
         url: '/devices',
-        templateUrl: 'app/devices/dashboard.html',
-        controller: 'DeviceDashboardController',
+        templateUrl: 'app/devices/list-devices.html',
+        controller: 'DeviceListController',
         data: {
           authorised: true
         }
       })
       .state('create-device', {
         url: '/devices/create',
-        templateUrl: 'app/devices/edit.html',
+        templateUrl: 'app/devices/edit-device.html',
         controller: 'CreateDeviceController',
         data: {
           authorised: true
@@ -127,7 +135,7 @@
       })
       .state('edit-device', {
         url: '/devices/:device',
-        templateUrl: 'app/devices/edit.html',
+        templateUrl: 'app/devices/edit-device.html',
         controller: 'EditDeviceController',
         data: {
           authorised: true
