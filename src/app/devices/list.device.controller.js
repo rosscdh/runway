@@ -14,75 +14,77 @@
       return tmp_video[Math.floor(Math.random() * tmp_video.length)]
     }
 
-    vm.unassigned_devices_list = [
+    vm.default_set_of_sensors = [
       {
-        'id': '400cea2e-3209-447d-97ed-deab784036e5',
+        'id': generateUUID(),
         'type': 'Temperature & Humidity',
         'description': '',
         'hives': [{
           'name': '',
           'url': ''
         }],
-        'status': 'available',
+        'status': 'Unassigned',
         'data': {
           'value': '25/10',
         }
       },
       {
-        'id': '7487838f-67c7-427f-84ce-02fb88f5d42f',
+        'id': generateUUID(),
         'type': 'Hive Weight',
         'description': '',
         'hives': [{
           'name': '',
           'url': ''
         }],
-        'status': 'available',
+        'status': 'Unassigned',
         'data': {
-          'value': '12',
+          'value': '12Kg',
         }
       },
       {
-        'id': '16735b68-c8cc-4081-9e29-75cd083d4262',
+        'id': generateUUID(),
         'type': 'In/Out Counter',
         'description': '',
         'hives': [{
           'name': '',
           'url': ''
         }],
-        'status': 'available',
+        'status': 'Unassigned',
         'data': {
           'value': '100/1000',
         }
       },
       {
-        'id': '95228195-81a2-4d2e-8334-5cf12f34e30c',
+        'id': generateUUID(),
         'type': 'Video Stream',
         'description': '',
         'hives': [{
           'name': '',
           'url': ''
         }],
-        'status': 'available',
+        'status': 'Unassigned',
         'data': {
           'value': random_video_still(),
         }
       },
     ];
 
+    vm.unassigned_devices_list = tmp_clone_sensors().concat(tmp_clone_sensors());
+
     vm.hives_list = [
       {
-        'name': 'Bob\'s Hive',
-        'location': '10b, Muggles rd, Perth',
+        'name': 'Reynold\'s Hive',
+        'location': '10b, Muggles rd, Perth, Western Australia',
         'description': 'Under the gumtree near the pond',
         'photo': {
           'url': 'http://media.treehugger.com/assets/images/2015/03/Colorado-Top-Bar-Open-Source-Beehive.jpg.662x0_q70_crop-scale.jpg',
           'alt': 'Open Source Hive'
         },
         'status': 'stable',
-        'sensors': tmp_clone_sensors()
+        'sensors': []
       },
       {
-        'name': 'UWA Hive #232',
+        'name': 'UWA Hive #237',
         'location': '720, Hillbrow ave, London',
         'description': 'Next to the wall by the playground',
         'photo': {
@@ -99,19 +101,21 @@
     function activate() {
     }
 
+    function generateUUID() {
+        var d = new Date().getTime();
+        var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
+            var r = (d + Math.random()*16)%16 | 0;
+            d = Math.floor(d/16);
+            return (c=='x' ? r : (r&0x3|0x8)).toString(16);
+        });
+        uuid = uuid.slice(0,7);
+        return uuid;
+    };
+
     function tmp_clone_sensors() {
-      function generateUUID() {
-          var d = new Date().getTime();
-          var uuid = 'xxxxxxxx-xxxx-4xxx-yxxx-xxxxxxxxxxxx'.replace(/[xy]/g, function(c) {
-              var r = (d + Math.random()*16)%16 | 0;
-              d = Math.floor(d/16);
-              return (c=='x' ? r : (r&0x3|0x8)).toString(16);
-          });
-          return uuid;
-      };
       var log = [];
       var sensor_set = [];
-      angular.copy(vm.unassigned_devices_list, sensor_set);
+      angular.copy(vm.default_set_of_sensors, sensor_set);
       angular.forEach(sensor_set, function(value, key) {
         value.id = generateUUID();
         if (value.type == 'Video Stream') {

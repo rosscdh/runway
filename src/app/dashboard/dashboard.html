@@ -28,12 +28,14 @@
           </div>
       </div>
 
-      <div class="col-lg-6">
+      <div class="col-lg-6" ng-controller="WeatherController">
           <div class="hpanel">
               <div class="panel-body text-center h-200">
                   <i class="pe-7s-graph1 fa-4x"></i>
 
-                  <h1 class="m-xs">6</h1>
+                  <h1 class="m-xs">
+                  <weather-icon cloudiness="{{ weather.clouds }}"></weather-icon>
+                  </h1>
 
                   <h3 class="font-extra-bold no-margins text-success">
                       Weather Forecast

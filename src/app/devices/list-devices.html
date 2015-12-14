@@ -6,48 +6,36 @@
 
     <div class="row" style="padding-top:25px;">
 
-        <div class="col-lg-5">
-            <!-- Start Hives Vehicle -->
-            <div class="col-lg-12" ng-repeat="row in vm.hives_list track by $index">
-                <div class="hpanel hyellow contact-panel">
-                    <div class="panel-body">
-                        <!-- <span class="label label-warning pull-right">NEW</span> -->
-                        <img alt="{{ row.photo.alt }}" class="img-circle m-b" src="{{ row.photo.url }}">
-                        <h3><a href=""> {{ row.name }} </a></h3>
-                        <div class="text-muted font-bold m-b-xs">{{ row.location }}</div>
-                        <p>
-                            {{ row.description }}
-                        </p>
-                    </div>
-                    <div class="panel-footer contact-footer">
-                        <div class="row">
-                            <div class="col-md-4 border-right" ng-repeat="sensor in row.sensors track by $index">
-                                <div class="contact-stat">
-                                    <span>{{ sensor.type }}</span>
-                                    <strong ng-if="sensor.type != 'Video Stream'">{{ sensor.data.value }}</strong>
-                                    <img ng-src="{{ sensor.data.value }}" ng-if="sensor.type == 'Video Stream'" />
+        <div class="col-lg-7">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="hpanel">
+                        <div class="panel-body">
+                            <h3>Available Sensors</h3>
+                            <div class="m-t-sm">
+                                <div class="input-group">
+                                    <input class="form-control" type="text" placeholder="Search for a sensor">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default"><i class="fa fa-search"></i></button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <!-- END Hives Vehicle -->
-        </div>
-
-        <div class="col-lg-7">
             <!-- Start Device Vehicle -->
+            <p>Drag &amp; drop the Sensors below onto it's Hive</p>
             <div class="col-lg-4" ng-repeat="sensor in vm.unassigned_devices_list track by $index">
                 <div class="hpanel hgreen contact-panel">
                     <div class="panel-body">
                         <span class="label label-success pull-right">{{ sensor.status }}</span>
-                        <h4><a href=""> {{ sensor.type }} </a></h4>
-                        <small class="text-muted font-bold m-b-xs">{{ sensor.id }}</small>
+                        <h4><a href=""> {{ sensor.type }} </a><small class="text-muted font-bold m-b-xs">{{ sensor.id }}</small></h4>
                         <p>
                             {{ sensor.description }}
                         </p>
                     </div>
-                    <div class="panel-footer contact-footer">
+                    <div class="panel-footer contact-footer" style="min-height:120px;">
                         <div class="row">
                             <div class="col-md-12 border-right">
                                 <div class="contact-stat">
@@ -61,6 +49,53 @@
                 </div>
             </div>
             <!-- END Device Vehicle -->
+        </div>
+
+        <div class="col-lg-5">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="hpanel">
+                        <div class="panel-body">
+                            <button class="btn btn-success btn-sm pull-right">Add Hive</button>
+                            <h3>Hives</h3>
+                            <div class="m-t-sm">
+                                <div class="input-group">
+                                    <input class="form-control" type="text" placeholder="Search for a hive">
+                                    <div class="input-group-btn">
+                                        <button class="btn btn-default"><i class="fa fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Start Hives Vehicle -->
+            <div class="col-lg-12" ng-repeat="row in vm.hives_list track by $index">
+                <div class="hpanel hyellow contact-panel">
+                    <div class="panel-body">
+                        <!-- <span class="label label-warning pull-right">NEW</span> -->
+                        <img alt="{{ row.photo.alt }}" class="img-circle m-b pull-right" ng-src="{{ row.photo.url }}">
+                        <h3><a href=""> {{ row.name }} </a></h3>
+                        <div class="text-muted font-bold m-b-xs">{{ row.location }}</div>
+                        <p>
+                            {{ row.description }}
+                        </p>
+                    </div>
+                    <div class="panel-footer contact-footer">
+                        <div class="row">
+                            <div class="col-md-4 border-right" ng-repeat="sensor in row.sensors track by $index">
+                                <div class="contact-stat">
+                                    <span>{{ sensor.type }}<br/><small>{{ sensor.id }}</small></span>
+                                    <strong ng-if="sensor.type != 'Video Stream'">{{ sensor.data.value }}</strong>
+                                    <img ng-src="{{ sensor.data.value }}" ng-if="sensor.type == 'Video Stream'" />
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- END Hives Vehicle -->
         </div>
 
     </div>

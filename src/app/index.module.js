@@ -18,7 +18,8 @@
                         'ui.footable',              // FooTable
                         'ui.tree',                  // Angular ui Tree
                         'bm.bsTour',                // Angular bootstrap tour
-                        'chart.js',                  // Chart.js
+                        //'chart.js',                  // Chart.js
+                        'picardy.fontawesome',
                         'HiveEmpire.config',
                        ]);
 
