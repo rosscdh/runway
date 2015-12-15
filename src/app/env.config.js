@@ -7,6 +7,7 @@ angular.module("HiveEmpire.config", [])
 	"API_ENDPOINTS": {
 		"default": "http://localhost:8008"
 	},
+	"OPENWEATHERMAP_KEY": "64c40382be6874babf1a82de71eaf1e8",
 	"OAUTH_TOKENS": {
 		"facebook": {
 			"KEY": "",

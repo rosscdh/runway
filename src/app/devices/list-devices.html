@@ -6,9 +6,9 @@
 
     <div class="row" style="padding-top:25px;">
 
-        <div class="col-lg-7">
+        <div class="col-sm-7">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-sm-12">
                     <div class="hpanel">
                         <div class="panel-body">
                             <h3>Available Sensors</h3>
@@ -26,7 +26,7 @@
             </div>
             <!-- Start Device Vehicle -->
             <p>Drag &amp; drop the Sensors below onto it's Hive</p>
-            <div class="col-lg-4" ng-repeat="sensor in vm.unassigned_devices_list track by $index">
+            <div class="col-sm-4" ng-repeat="sensor in vm.unassigned_devices_list track by $index" style="cursor:pointer;">
                 <div class="hpanel hgreen contact-panel">
                     <div class="panel-body">
                         <span class="label label-success pull-right">{{ sensor.status }}</span>
@@ -51,9 +51,9 @@
             <!-- END Device Vehicle -->
         </div>
 
-        <div class="col-lg-5">
+        <div class="col-sm-5">
             <div class="row">
-                <div class="col-lg-12">
+                <div class="col-sm-12">
                     <div class="hpanel">
                         <div class="panel-body">
                             <button class="btn btn-success btn-sm pull-right">Add Hive</button>
@@ -71,7 +71,7 @@
                 </div>
             </div>
             <!-- Start Hives Vehicle -->
-            <div class="col-lg-12" ng-repeat="row in vm.hives_list track by $index">
+            <div class="col-sm-12" ng-repeat="row in vm.hives_list track by $index" style="cursor:pointer;" ng-click="vm.goToHive(row)">
                 <div class="hpanel hyellow contact-panel">
                     <div class="panel-body">
                         <!-- <span class="label label-warning pull-right">NEW</span> -->

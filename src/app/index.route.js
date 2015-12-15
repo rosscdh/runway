@@ -80,16 +80,16 @@
       // Hive - Dashboard
       // a view for a specific hives
       // ------------------------------------------
-      .state('hive-list', {
-        url: '/hives',
-        templateUrl: 'app/hives/list-hives.html',
-        controller: 'ListHivesController',
-        data: {
-          authorised: true
-        }
-      })
+      // .state('hive-list', {
+      //   url: '/hives',
+      //   templateUrl: 'app/hives/list-hives.html',
+      //   controller: 'ListHivesController',
+      //   data: {
+      //     authorised: true
+      //   }
+      // })
       .state('hive-dashboard', {
-        url: '/hives/:hive',
+        url: '/hives/:hive/dashboard',
         templateUrl: 'app/hives/dashboard.html',
         controller: 'DashboardHiveController',
         data: {
@@ -104,14 +104,14 @@
           authorised: true
         }
       })
-      .state('edit-hive', {
-        url: '/hives/:hive',
-        templateUrl: 'app/hives/edit-hive.html',
-        controller: 'EditHiveController',
-        data: {
-          authorised: true
-        }
-      })
+      // .state('edit-hive', {
+      //   url: '/hives/:hive',
+      //   templateUrl: 'app/hives/edit-hive.html',
+      //   controller: 'EditHiveController',
+      //   data: {
+      //     authorised: true
+      //   }
+      // })
       // ------------------------------------------
       // Sense - Devices
       // CRUD for the HiveEmpire-Sense devices
