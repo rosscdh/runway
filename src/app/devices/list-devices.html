@@ -6,7 +6,7 @@
 
     <div class="row" style="padding-top:25px;">
 
-        <div class="col-sm-7">
+        <div class="col-sm-5">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="hpanel">
@@ -25,23 +25,25 @@
                 </div>
             </div>
             <!-- Start Device Vehicle -->
-            <p>Drag &amp; drop the Sensors below onto it's Hive</p>
-            <div class="col-sm-4" ng-repeat="sensor in vm.unassigned_devices_list track by $index" style="cursor:pointer;">
-                <div class="hpanel hgreen contact-panel">
-                    <div class="panel-body">
-                        <span class="label label-success pull-right">{{ sensor.status }}</span>
-                        <h4><a href=""> {{ sensor.type }} </a><small class="text-muted font-bold m-b-xs">{{ sensor.id }}</small></h4>
-                        <p>
-                            {{ sensor.description }}
-                        </p>
-                    </div>
-                    <div class="panel-footer contact-footer" style="min-height:120px;">
-                        <div class="row">
-                            <div class="col-md-12 border-right">
-                                <div class="contact-stat">
-                                    <span>Most recent: </span>
-                                    <strong ng-if="sensor.type != 'Video Stream'">{{ sensor.data.value }}</strong>
-                                    <img ng-src="{{ sensor.data.value }}" ng-if="sensor.type == 'Video Stream'" />
+            <div class="row">
+                <p>Drag &amp; drop the Sensors below onto it's Hive</p>
+                <div class="col-sm-5" ng-repeat="sensor in vm.unassigned_devices_list track by $index" style="cursor:pointer;">
+                    <div class="hpanel hgreen contact-panel">
+                        <div class="panel-body">
+                            <span class="label label-success pull-right">{{ sensor.status }}</span>
+                            <h4><a href=""> {{ sensor.type }} </a><small class="text-muted font-bold m-b-xs">{{ sensor.id }}</small></h4>
+                            <p>
+                                {{ sensor.description }}
+                            </p>
+                        </div>
+                        <div class="panel-footer contact-footer" style="min-height:120px;">
+                            <div class="row">
+                                <div class="col-md-12 border-right">
+                                    <div class="contact-stat">
+                                        <span>Most recent: </span>
+                                        <strong ng-if="sensor.type != 'Video Stream'">{{ sensor.data.value }}</strong>
+                                        <img ng-src="{{ sensor.data.value }}" ng-if="sensor.type == 'Video Stream'" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -51,7 +53,7 @@
             <!-- END Device Vehicle -->
         </div>
 
-        <div class="col-sm-5">
+        <div class="col-sm-7">
             <div class="row">
                 <div class="col-sm-12">
                     <div class="hpanel">

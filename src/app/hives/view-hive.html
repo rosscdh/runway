@@ -1,17 +1,18 @@
-<div class="container" ng-controller="DashboardHiveController as vm">
+<div class="container">
 
   <div>
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
   </div>
 
   <div class="page-header">
-    <img alt="{{ object.photo.alt }}" class="col-sm-4 m-b pull-right img-responsive" ng-src="{{ object.photo.url }}">
+    <img alt="{{ object.photo.alt }}" class="col-sm-4 m-b pull-right img-rounded img-responsive" ng-src="{{ object.photo.url }}">
     <h1>{{ object.name }}<br/><small>{{ object.description }}</small></h1>
   </div>
 
   <div class="clearfix"></div>
 
   <div class="row">
+    <h3>Environment</h3>
     <div class="col-sm-9">
         <div class="hpanel">
             <div class="panel-body text-center h-200">
@@ -47,21 +48,20 @@
   </div>
 
   <div class="row">
-
+      <h3>Current Data</h3>
       <div class="col-sm-6">
           <div class="hpanel">
               <div class="panel-body text-center h-200">
-                  <i class="pe-7s-graph1 fa-4x"></i>
+                  <div class="stats-icon pull-right">
+                      <i class="pe-7s-graph1 fa-4x"></i>
+                  </div>
 
                   <h1 class="m-xs">24</h1>
 
                   <h3 class="font-extra-bold no-margins text-success">
-                      Current Hive Temp
+                      Hive Temperature &amp; Humidity
                   </h3>
                   <small>Current temp is 24 and trending downwards.</small>
-              </div>
-              <div class="panel-footer">
-                  &nbsp;
               </div>
           </div>
       </div>
@@ -69,24 +69,50 @@
       <div class="col-sm-6">
           <div class="hpanel">
               <div class="panel-body text-center h-200">
-                  <i class="pe-7s-graph1 fa-4x"></i>
+                  <div class="stats-icon pull-right">
+                      <i class="pe-7s-graph1 fa-4x"></i>
+                  </div>
 
                   <h1 class="m-xs">64%</h1>
 
                   <h3 class="font-extra-bold no-margins text-success">
-                      Current Hive Humidity
+                      Hive Weight
                   </h3>
                   <small>Current temp is 64 and trending upwards.</small>
-              </div>
-              <div class="panel-footer">
-                  &nbsp;
               </div>
           </div>
       </div>
 
   </div>
 
+
   <div class="row">
-    <leaflet center="center" markers="markers" layers="layers" width="100%" height="480px"></leaflet>
+      <h3>Sensors</h3>
+      <div class="col-md-3" ng-repeat="row in object.sensors track by $index">
+          <div class="hpanel">
+              <div class="panel-body">
+                  <div class="stats-title pull-left">
+                      <h4>{{ row.type }}</h4>
+                  </div>
+                  <div class="stats-icon pull-right">
+                      <i class="{{ row.icon }} fa-4x"></i>
+                  </div>
+                  <div class="m-t-xl">
+                      <small>
+                          <p><b>Last Data:</b> 2015-12-16 09:23:67</p>
+                          <p><b>Battery:</b> 80%</p>
+                      </small>
+                  </div>
+              </div>
+          </div>
+      </div>
+  </div>
+
+
+  <div class="row">
+    <h3>Location</h3>
+    <div class="col-md-offset-1 col-md-11">
+      <leaflet center="center" markers="markers" layers="layers" width="100%" height="480px"></leaflet>
+    </div>
   </div>
 </div>

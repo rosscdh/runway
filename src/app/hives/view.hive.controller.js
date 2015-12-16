@@ -3,7 +3,7 @@
 
   angular
     .module('runway')
-    .controller('DashboardHiveController',
+    .controller('ViewHiveController',
                 ['$state',
                  '$scope',
                  'HivesService',
@@ -32,10 +32,7 @@
             'id': '',
             'type': 'Temperature & Humidity',
             'description': '',
-            'hives': [{
-              'name': '',
-              'url': ''
-            }],
+            'icon': 'pe-7s-sun',
             'status': 'Unassigned',
             'data': {
               'value': '25/10',
@@ -45,10 +42,7 @@
             'id': '',
             'type': 'Hive Weight',
             'description': '',
-            'hives': [{
-              'name': '',
-              'url': ''
-            }],
+            'icon': 'pe-7s-drop',
             'status': 'Unassigned',
             'data': {
               'value': '12Kg',
@@ -61,7 +55,7 @@
         center: {
           lat: -31.9815384,
           lng: 115.8184183,
-          zoom: 15
+          zoom: 17
         },
         layers: {
           baselayers: {
@@ -71,7 +65,15 @@
               type: 'xyz'
             },
           }
-        }
+        },
+        markers: {
+            m1: {
+                lat: -31.9830384,
+                lng: 115.8189183,
+                message: "I'm a static marker",
+                icon: {},
+            },
+        },
       });
 
       WeatherService.getWeather(-31.9815384, 115.8184183).then(function (data) {

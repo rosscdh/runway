@@ -51,6 +51,8 @@ gulp.task('html', ['inject', 'partials'], function () {
     .pipe(cssFilter)
     .pipe($.sourcemaps.init())
     .pipe($.replace('../../bower_components/bootstrap-sass/assets/fonts/bootstrap/', '../fonts/'))
+    .pipe($.replace('../../bower_components/font-awesome/fonts', '../fonts/'))
+    .pipe($.replace('../../bower_components/pixeden-stroke-7-icon/pe-icon-7-stroke/fonts/', '../fonts'))
     .pipe($.minifyCss({ processImport: false }))
     .pipe($.sourcemaps.write('maps'))
     .pipe(cssFilter.restore)
