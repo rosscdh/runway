@@ -73,7 +73,7 @@ def staging():
     env.environment = 'staging'
     env.environment_class = 'staging'
 
-    env.remote_project_path = '/home/ubuntu/apps/hiveempire-app/manualone'
+    env.remote_project_path = '/home/ubuntu/apps/hiveempire-app/current'
     env.remote_versions_path = '/home/ubuntu/apps/hiveempire-app/versions'
     env.deploy_archive_path = '/home/ubuntu/apps/hiveempire-app'
 
