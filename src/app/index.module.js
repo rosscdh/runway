@@ -20,6 +20,8 @@
                         'angular-flot',
                         'picardy.fontawesome',
                         'leaflet-directive',        // angular-leaflet-directive (maps)
+                        'angular-jwt',              // angular-jwt
+                        'ngStorage',                // https://github.com/gsklee/ngStorage
                         'HiveEmpire.config',
                        ]);
 

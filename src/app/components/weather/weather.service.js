@@ -25,15 +25,25 @@
         getWeather: function (lat, lon) {
           var deferred = $q.defer();
 
-          $http.get('http://api.openweathermap.org/data/2.5/forecast?APPID='+HiveEmpireConf.OPENWEATHERMAP_KEY+'&lat='+ lat +'&lon='+ lon)
-               .success(function(data){
-                 //$log.debug(data);
-                 deferred.resolve(data);
-               })
-               .error(function(err){
-                 $log.error('Error retrieving weather');
-                 deferred.reject(err);
-               });
+          $http({
+            url: 'http://api.openweathermap.org/data/2.5/forecast',
+            // This makes it so that this request doesn't send the JWT
+            skipAuthorization: true,
+            method: 'POST',
+            data: {
+                APPID: HiveEmpireConf.OPENWEATHERMAP_KEY,
+                lat: lat,
+                lon: lon
+            }
+          })
+          .success(function(data){
+            //$log.debug(data);
+            deferred.resolve(data);
+          })
+          .error(function(err){
+            $log.error('Error retrieving weather');
+            deferred.reject(err);
+          });
 
           return deferred.promise;
         } // end getWeather
