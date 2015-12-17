@@ -28,7 +28,6 @@
     "angular-leaflet-directive": "~0.10.0",
     "angular-flot": "~0.0.15",
     "font-awesome": "fontawesome#~4.5.0",
-    "pixeden-stroke-7-icon": "~1.2.3",
     "angular-jwt": "~0.0.9",
     "ngstorage": "~0.3.10"
   },

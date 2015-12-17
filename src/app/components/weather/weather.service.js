@@ -26,15 +26,10 @@
           var deferred = $q.defer();
 
           $http({
-            url: 'http://api.openweathermap.org/data/2.5/forecast',
+            url: 'http://api.openweathermap.org/data/2.5/forecast?&APPID='+HiveEmpireConf.OPENWEATHERMAP_KEY+'&lat='+lat+'&lon='+lon,
             // This makes it so that this request doesn't send the JWT
             skipAuthorization: true,
-            method: 'POST',
-            data: {
-                APPID: HiveEmpireConf.OPENWEATHERMAP_KEY,
-                lat: lat,
-                lon: lon
-            }
+            method: 'GET'
           })
           .success(function(data){
             //$log.debug(data);
