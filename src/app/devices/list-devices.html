@@ -73,13 +73,13 @@
                 </div>
             </div>
             <!-- Start Hives Vehicle -->
-            <div class="col-sm-12" ng-repeat="row in vm.hives_list track by $index" style="cursor:pointer;" ng-click="vm.goToHive(row)">
+            <div class="col-sm-12" ng-repeat="row in vm.hives.results track by $index" style="cursor:pointer;" ng-click="vm.goToHive(row)">
                 <div class="hpanel hyellow contact-panel">
                     <div class="panel-body">
-                        <!-- <span class="label label-warning pull-right">NEW</span> -->
-                        <img alt="{{ row.photo.alt }}" class="img-circle m-b pull-right" ng-src="{{ row.photo.url }}">
-                        <h3><a href=""> {{ row.name }} </a></h3>
-                        <div class="text-muted font-bold m-b-xs">{{ row.location }}</div>
+                    <span class="label label-success">{{ row.status }}</span>
+                        <img alt="{{ row.photo.alt }}" title="{{ row.photo.alt }}" class="img-circle m-b pull-right img-responsive" ng-src="{{ row.photo.url }}">
+                        <h3><a href=""> {{ row.name }}</a></h3>
+                        <div ng-show="row.location.address" class="text-muted font-bold m-b-xs">{{ row.location.address }}</div>
                         <p>
                             {{ row.description }}
                         </p>

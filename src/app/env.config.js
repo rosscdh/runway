@@ -6,7 +6,7 @@ angular.module("HiveEmpire.config", [])
 	"APPLICATION_ID": 1,
 	"DEFAULT_ITEMS_PER_PAGE": 25,
 	"API_ENDPOINTS": {
-		"default": "http://app.hive-empire.com",
+		"default": "http://localhost:8008",
 		"auth": "http://localhost:8008"
 	},
 	"OPENWEATHERMAP_KEY": "64c40382be6874babf1a82de71eaf1e8",

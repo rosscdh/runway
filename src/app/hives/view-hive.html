@@ -5,8 +5,12 @@
   </div>
 
   <div class="page-header">
-    <img alt="{{ object.photo.alt }}" class="col-sm-4 m-b pull-right img-rounded img-responsive" ng-src="{{ object.photo.url }}">
-    <h1>{{ object.name }}<br/><small>{{ object.description }}</small></h1>
+    <div class="col-md-3 pull-right">
+        <img alt="{{ object.photo.alt }}" class="img-rounded m-b pull-right img-responsive" ng-src="{{ object.photo.url }}">
+    </div>
+    <h1>{{ object.name }}</h1>
+    <div ng-show="object.location.address" class="text-muted font-bold m-b-xs">{{ object.location.address }}</div>
+    <div><small>{{ object.description }}</small></div>
   </div>
 
   <div class="clearfix"></div>
@@ -16,7 +20,7 @@
     <div class="col-sm-9">
         <div class="hpanel">
             <div class="panel-body text-center h-200">
-                <img ng-src="http://openweathermap.org/img/w/{{ weather.weather[0].icon }}.png">
+                <img ng-src="http://openweathermap.org/img/w/{{ weather.weather[0].icon }}.png" alt="{{ row.photo.alt }}" title="{{ row.photo.alt }}">
 
                 <h1 class="m-xs">{{ weather.temp.celcius }}C <small>({{ weather.temp.fahrenheit }}F)</small></h1>
 
@@ -44,6 +48,13 @@
                 Windspeed &amp; Direction
             </div>
         </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <h3>History Graph</h3>
+    <div class="col-md-offset-1 col-md-11">
+      <img class="img-responsive" src="/assets/images/tmp-history-graph.png" alt="Temporary graph" title="Temporary graph"/>
     </div>
   </div>
 
@@ -115,4 +126,12 @@
       <leaflet center="center" markers="markers" layers="layers" width="100%" height="480px"></leaflet>
     </div>
   </div>
+
+  <div class="row">
+    <h3>Timeline</h3>
+    <div class="col-md-offset-1 col-md-11">
+    <img class="img-responsive" src="/assets/images/tmp-timeline.png" alt="Temporary graph" title="Temporary graph"/>
+    </div>
+  </div>
+
 </div>

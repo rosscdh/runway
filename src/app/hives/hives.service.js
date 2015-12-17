@@ -10,19 +10,33 @@
       function ($q, $resource, HiveEmpireConf) {
 
         function HiveAPI() {
-            return $resource(HiveEmpireConf.API_ENDPOINTS.default + '/v1/hives/:id', {}, {
+            return $resource(HiveEmpireConf.API_ENDPOINTS.default + '/v1/hives/:uuid/', {}, {
                 'get': {'cache': true},
                 'query': {'cache': true, 'isArray': false}
             });
         }
 
         return {
-          detail: function (id) {
+          list: function () {
             var deferred = $q.defer();
             var api = HiveAPI();
-            api.get({'id': id},
+            api.get({},
                 function success(response) {
                     deferred.resolve(response.toJSON());
+                },
+                function error(err) {
+                    deferred.reject(err);
+                }
+            );
+            return deferred.promise;
+          },
+          detail: function (uuid) {
+            var deferred = $q.defer();
+            var api = HiveAPI();
+            api.get({'uuid': uuid},
+                function success(response) {
+                    var data = response.toJSON();
+                    deferred.resolve(data);
                 },
                 function error(err) {
                     deferred.reject(err);
