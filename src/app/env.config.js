@@ -1,11 +1,11 @@
 angular.module("HiveEmpire.config", [])
 
 .constant("HiveEmpireConf", {
-	"ENV": "development",
+	"ENV": "staging",
 	"APPLICATION_ID": 1,
 	"DEFAULT_ITEMS_PER_PAGE": 25,
 	"API_ENDPOINTS": {
-		"default": "http://localhost:8008"
+		"default": "http://app.hive-empire.com"
 	},
 	"OPENWEATHERMAP_KEY": "64c40382be6874babf1a82de71eaf1e8",
 	"OAUTH_TOKENS": {

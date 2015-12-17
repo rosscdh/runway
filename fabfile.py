@@ -12,7 +12,7 @@ TRUTHY = ['true', 't', 'y', 'yes', '1', 1]
 FALSEY = ['false', 'f', 'n', 'no', '0', 0]
 
 env.DEBUG = False
-env.project = 'manualone-app'
+env.project = 'hiveempire-app'
 env.use_ssh_config = True
 env.disable_known_hosts = True
 
@@ -57,9 +57,9 @@ def production():
     env.environment = 'production'
     env.environment_class = 'production'
 
-    env.remote_project_path = '/home/ubuntu/apps/manualone-app/current'
-    env.remote_versions_path = '/home/ubuntu/apps/manualone-app/releases'
-    env.deploy_archive_path = '/home/ubuntu/apps/manualone-app'
+    env.remote_project_path = '/home/ubuntu/apps/hiveempire-app/current'
+    env.remote_versions_path = '/home/ubuntu/apps/hiveempire-app/releases'
+    env.deploy_archive_path = '/home/ubuntu/apps/hiveempire-app'
 
 
 @task
@@ -73,9 +73,9 @@ def staging():
     env.environment = 'staging'
     env.environment_class = 'staging'
 
-    env.remote_project_path = '/home/ubuntu/apps/manualone-app/manualone'
-    env.remote_versions_path = '/home/ubuntu/apps/manualone-app/versions'
-    env.deploy_archive_path = '/home/ubuntu/apps/manualone-app'
+    env.remote_project_path = '/home/ubuntu/apps/hiveempire-app/manualone'
+    env.remote_versions_path = '/home/ubuntu/apps/hiveempire-app/versions'
+    env.deploy_archive_path = '/home/ubuntu/apps/hiveempire-app'
 
 # ------------------------------------
 # Helper Methods
@@ -144,10 +144,11 @@ def restart_nginx(soft=True):
 
 @task
 def copy_confs():
-    # manualONE config
-    put(local_path='./config/environments/%s/app.manualone.com'% (env.environment), remote_path='/etc/nginx/sites-available/', use_glob=False, use_sudo=True)  # nginx
-    sudo('unlink {target_path}; ln -s {nginx_site_path} {target_path}'.format(nginx_site_path='/etc/nginx/sites-available/app.manualone.com', target_path='/etc/nginx/sites-enabled/app.manualone.com'))
-    sudo('service supervisor restart')
+    # config
+    put(local_path='./config/environments/%s/hiveempire-app-nginx'% (env.environment), remote_path='/etc/nginx/sites-available/', use_glob=False, use_sudo=True)  # nginx
+    sudo('unlink {target_path}; ln -s {nginx_site_path} {target_path}'.format(nginx_site_path='/etc/nginx/sites-available/hiveempire-app-nginx', target_path='/etc/nginx/sites-enabled/hiveempire-app-nginx'))
+    sudo('service nginx configtest')
+    sudo('service nginx reload')
 
 @task
 def chown():
@@ -179,7 +180,7 @@ def deploy():
     remove_dist()
     source_path = os.path.join(env.dist_root, '*')
     target_path = os.path.join(env.remote_versions_path, git_sha())
-    local('bower install')
+    #local('bower install')
     gulp_build()
     run('mkdir -p {target_path}'.format(target_path=target_path))
     rsync_project(local_dir=source_path, remote_dir=target_path, exclude='.git')

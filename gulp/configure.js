@@ -16,7 +16,7 @@ gulp.task('config:dev', function () {
 });
 
 gulp.task('config:staging', function () {
-  gulp.src('./config/staging.json')
+  gulp.src('./config/environments/staging/staging.json')
     .pipe(rename("env.config.js")) // important rename prod to config
     .pipe(ngConstant({
       name: 'HiveEmpire.config',
@@ -27,7 +27,7 @@ gulp.task('config:staging', function () {
 
 
 gulp.task('config:production', function () {
-  gulp.src('./config/production.json')
+  gulp.src('./config/environments/production/production.json')
     .pipe(rename("env.config.js")) // important rename prod to config
     .pipe(ngConstant({
       name: 'HiveEmpire.config',
