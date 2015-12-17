@@ -4,35 +4,35 @@ angular.module('runway')
   .controller('LoginController', [
     '$log',
     '$scope',
-    '$modalInstance',
     '$rootScope',
-    'trackingService',
-    'registerService',
-    'MessageCentreService',
-    function($log, $scope, $modalInstance, $rootScope, trackingService, registerService, MessageCentreService) {
+    'AuthService',
+    'toastr',
+    function($log, $scope, $rootScope, AuthService, toastr) {
 
       $scope.credentials = {};
 
-      $scope.close = function() {
-        $modalInstance.close();
-      };
-
       $scope.startLogin = function() {
         if ($scope.loginForm.$valid) {
-          return registerService.login($scope.credentials.email, $scope.credentials.password).then(
+
+          return AuthService.login($scope.credentials.email, $scope.credentials.password).then(
             function success(data) {
-              $modalInstance.close();
-              $rootScope.currentUser.setUser(data.result);
 
-              MessageCentreService.sendRailsResponse({
-                'title': 'Willkommen, du bist jetzt angemeldet.'
-              });
+              $rootScope.currentUser.setAccessToken(data.result.toJSON().token);
 
-              trackingService.track('user.login', $rootScope.currentUser.getUser());
-              $rootScope.goNext();
+              AuthService.me().then(
+                function success (data) {
+                  $rootScope.currentUser.setUser(data.result.toJSON());
+                  toastr.info('You have logged in to HiveEmpire', 'Signed in successfully')
+                  $rootScope.goNext('/');
+                },
+                function error (err) {
+                  toastr.warning(err, 'Authentication Failed')
+                }
+              );
+
             },
             function error(err) {
-              MessageCentreService.sendRailsResponse(err.data);
+              toastr.error(err.data, 'Error')
             }
           );
         }

@@ -4,44 +4,29 @@ angular.module('runway')
   .controller('SignupController', [
     '$log',
     '$scope',
-    '$modalInstance',
     '$rootScope',
-    'trackingService',
-    'registerService',
-    'MessageCentreService',
-    function($log, $scope, $modalInstance, $rootScope, trackingService, registerService, MessageCentreService) {
+    'AuthService',
+    'toastr',
+    function($log, $scope, $rootScope, AuthService, toastr) {
 
       $scope.credentials = {};
 
-      $scope.close = function() {
-        $modalInstance.close();
-      };
-
       $scope.startRegistration = function() {
-        if ($scope.registerForm.$valid) {
-          registerService.register($scope.credentials).then(
+        if ($scope.signUpForm.$valid) {
+
+          AuthService.register($scope.credentials).then(
             function success(data) {
-              $modalInstance.close();
-              var is_new = data.result.is_new;
-              $rootScope.currentUser.setUser(data.result);
 
-              if (is_new === true) {
-                // show the newsletter popup
-                registerService.newsletterSubscribeDialog();
-              }
+              $rootScope.currentUser.setUser(data.result.toJSON());
+              toastr.info('You have registered with HiveEmpire', 'Registered')
+              $rootScope.goNext('/');
 
-              MessageCentreService.sendRailsResponse({
-                'title': 'Willkommen, du hast dich erfolgreich registriert.'
-              });
-
-              trackingService.track('user.signup', $rootScope.currentUser.getUser());
-
-              // $rootScope.goNext();
             },
             function error(err) {
-              MessageCentreService.sendRailsResponse(err.data);
+              toastr.error(err, 'Authentication Failed')
             });
         }
+
       };
     }
   ]);

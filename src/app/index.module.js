@@ -22,6 +22,7 @@
                         'leaflet-directive',        // angular-leaflet-directive (maps)
                         'angular-jwt',              // angular-jwt
                         'ngStorage',                // https://github.com/gsklee/ngStorage
+                        'satellizer',               // https://github.com/sahat/satellizer
                         'HiveEmpire.config',
                        ]);
 
