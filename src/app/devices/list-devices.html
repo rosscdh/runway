@@ -41,7 +41,7 @@
                                 <div class="col-md-12 border-right">
                                     <div class="contact-stat">
                                         <span>Most recent: </span>
-                                        <strong ng-if="sensor.name != 'Video Stream'">{{ sensor.data }}</strong>
+                                        <strong ng-if="sensor.name != 'Video Stream'">{{ sensor.value }}</strong>
                                         <img ng-src="{{ sensor.data.value }}" ng-if="sensor.type == 'Video Stream'" />
                                     </div>
                                 </div>
