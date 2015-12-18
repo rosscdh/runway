@@ -6,13 +6,13 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($rootScope, $state, $log, $location, currentUserService, toastr) {
+  function runBlock($rootScope, $state, $log, $q, $location, currentUserService, DevicesService, toastr) {
     $rootScope.currentUser = currentUserService;
 
+    /**
+    * Manage the change of state
+    */
     $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
-      //$log.debug('AUTHORISED VIEWS: isAuthorised:'+ $rootScope.currentUser.isAuthenticated())
-      //$window.scrollTo(0, 0);
-
       var uriStateData = angular.extend({}, {
         authorised: false, // dont require login by default
         'container-class': 'container' // default
@@ -29,6 +29,32 @@
       }
     });
 
+    /**
+    * Manager for if they have setup a device yet or not
+    */
+    $rootScope.setUpHiveSenseDevice = function() {
+      var deferred = $q.defer();
+
+      DevicesService.query().then(
+        function success(response) {
+            if (response.count == 0) {
+              // no devices found redirect to device setup page
+              $state.go('create-device');
+            } else {
+              deferred.resolve(response);
+            }
+        },
+        function error(err) {
+            toastr.warning(err, 'An Error Occurred')
+            deferred.reject(err);
+        });
+
+      return deferred.promise;
+    };
+
+    /**
+    * Generic GoNext handler for login with next param in url
+    */
     $rootScope.goNext = function(path) {
       if ($rootScope.next || path) {
 

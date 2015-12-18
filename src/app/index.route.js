@@ -120,7 +120,7 @@
       })
       .state('create-device', {
         url: '/devices/create',
-        templateUrl: 'app/devices/edit-device.html',
+        templateUrl: 'app/devices/create-device.html',
         controller: 'CreateDeviceController',
         data: {
           authorised: true

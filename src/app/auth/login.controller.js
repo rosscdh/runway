@@ -23,7 +23,9 @@ angular.module('runway')
                 function success (data) {
                   $rootScope.currentUser.setUser(data.result.toJSON());
                   toastr.info('You have logged in to HiveEmpire', 'Signed in successfully')
-                  $rootScope.goNext('/');
+                  $rootScope.setUpHiveSenseDevice().then(function () {
+                      $rootScope.goNext('/');
+                  });
                 },
                 function error (err) {
                   toastr.warning(err, 'Authentication Failed')

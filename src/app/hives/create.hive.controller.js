@@ -130,10 +130,5 @@
           toastr.warning(err.data, 'Error on Submit')
         });
     }
-
-    activate();
-
-    function activate() {
-    }
   }
 })();
