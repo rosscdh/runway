@@ -97,6 +97,14 @@
           authorised: true
         }
       })
+      .state('edit-hive', {
+        url: '/hives/:hive/edit',
+        templateUrl: 'app/hives/edit-hive.html',
+        controller: 'EditHiveController',
+        data: {
+          authorised: true
+        }
+      })
       // ------------------------------------------
       // Sense - Devices
       // CRUD for the HiveEmpire-Sense devices

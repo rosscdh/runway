@@ -23,6 +23,8 @@
                         'angular-jwt',              // angular-jwt
                         'ngStorage',                // https://github.com/gsklee/ngStorage
                         'satellizer',               // https://github.com/sahat/satellizer
+                        'formly',
+                        'formlyBootstrap',
                         'HiveEmpire.config',
                        ]);
 

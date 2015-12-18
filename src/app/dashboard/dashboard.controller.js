@@ -6,7 +6,7 @@
     .controller('DashboardController', DashboardController);
 
   /** @ngInject */
-  function DashboardController($scope) {
+  function DashboardController() {
     var vm = this;
 
     activate();

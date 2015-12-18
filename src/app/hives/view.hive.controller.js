@@ -60,8 +60,8 @@
         //console.log(object)
         angular.extend($scope, {
           center: {
-            lat: object.location.lat,
-            lng: object.location.lon,
+            lat: object.position.latitude,
+            lng: object.position.longitude,
             zoom: 17
           },
           layers: {
@@ -75,8 +75,8 @@
           },
           markers: {
               m1: {
-                  lat: object.location.lat,
-                  lng: object.location.lon,
+                  lat: object.position.latitude,
+                  lng: object.position.longitude,
                   message: object.name,
                   icon: {
                     iconUrl: object.photo.url,
@@ -90,7 +90,7 @@
           },
         });
 
-        WeatherService.getWeather(object.location.lat, object.location.lon).then(function (data) {
+        WeatherService.getWeather(object.position.latitude, object.position.longitude).then(function (data) {
             $scope.weather = data.list[0];
             $scope.weather.wind.direction = WeatherService.degreesToCompass($scope.weather.wind.deg);
             $scope.weather.temp = {

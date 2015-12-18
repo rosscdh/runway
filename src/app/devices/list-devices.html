@@ -58,7 +58,7 @@
                 <div class="col-sm-12">
                     <div class="hpanel">
                         <div class="panel-body">
-                            <button class="btn btn-success btn-sm pull-right">Add Hive</button>
+                            <button ng-click="go($event)" ui-sref="create-hive" class="btn btn-success btn-sm pull-right">Add Hive</button>
                             <h3>Hives</h3>
                             <div class="m-t-sm">
                                 <div class="input-group">
@@ -79,7 +79,7 @@
                     <span class="label label-success">{{ row.status }}</span>
                         <img alt="{{ row.photo.alt }}" title="{{ row.photo.alt }}" class="img-circle m-b pull-right img-responsive" ng-src="{{ row.photo.url }}">
                         <h3><a href=""> {{ row.name }}</a></h3>
-                        <div ng-show="row.location.address" class="text-muted font-bold m-b-xs">{{ row.location.address }}</div>
+                        <div ng-show="row.address" class="text-muted font-bold m-b-xs">{{ row.address }}</div>
                         <p>
                             {{ row.description }}
                         </p>

@@ -1,8 +1,8 @@
 angular.module("HiveEmpire.config", [])
 
 .constant("HiveEmpireConf", {
-	"ENV": "staging",
-	"DEBUG": false,
+	"ENV": "development",
+	"DEBUG": true,
 	"APPLICATION_ID": 1,
 	"DEFAULT_ITEMS_PER_PAGE": 25,
 	"API_ENDPOINTS": {

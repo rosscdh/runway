@@ -46,10 +46,10 @@
       }
 
       $scope.is_active_nav_option = function(state_name) {
-        if (typeof state_name === 'string' && state_name === $state.current.name) {
+        if (angular.isString(state_name) && state_name === $state.current.name) {
           return true;
         }
-        if (Object.prototype.toString.call( state_name ) === '[object Array]' && state_name.indexOf($state.current.name) >= 0) {
+        if (angular.isArray( state_name ) && state_name.indexOf($state.current.name) >= 0) {
           return true;
         }
         return false;

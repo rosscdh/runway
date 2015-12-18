@@ -4,12 +4,18 @@
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
   </div>
 
+  <div class="row">
+    <div class="md-col-5">
+      <button ng-click="go($event)" ui-sref="edit-hive({hive: object.uuid})" class="btn btn-success btn-sm">Edit</button>
+    </div>
+  </div>
+
   <div class="page-header">
     <div class="col-md-3 pull-right">
         <img alt="{{ object.photo.alt }}" class="img-rounded m-b pull-right img-responsive" ng-src="{{ object.photo.url }}">
     </div>
     <h1>{{ object.name }}</h1>
-    <div ng-show="object.location.address" class="text-muted font-bold m-b-xs">{{ object.location.address }}</div>
+    <div ng-show="object.address" class="text-muted font-bold m-b-xs">{{ object.address }}</div>
     <div><small>{{ object.description }}</small></div>
   </div>
 
