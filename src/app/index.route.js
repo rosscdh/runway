@@ -91,7 +91,7 @@
       })
       .state('create-hive', {
         url: '/hives/create',
-        templateUrl: 'app/hives/edit-hive.html',
+        templateUrl: 'app/hives/create-hive.html',
         controller: 'CreateHiveController',
         data: {
           authorised: true

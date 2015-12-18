@@ -1,0 +1,21 @@
+<div class="container" ng-controller="CreateHiveController as vm">
+
+    <div>
+        <acme-navbar creation-date="main.creationDate"></acme-navbar>
+    </div>
+
+    <div class="row" style="padding-top:25px;">
+
+        <div class="col-sm-6">
+          <form ng-submit="vm.onSubmit()" name="vm.hiveForm" novalidate>
+            <formly-form model="vm.hive" options="vm.options" fields="vm.hiveFields" form="vm.hiveForm"></formly-form>
+            <div class="col-md-12">
+              <leaflet center="vm.center" markers="vm.markers" layers="vm.layers" width="100%" height="320px"></leaflet>
+            </div>
+            <button type="submit" class="btn btn-primary submit-button" ng-disabled="vm.hiveForm.$invalid">{{ vm.button_label }}</button>
+          </form>
+        </div>
+
+    </div>
+
+</div>
