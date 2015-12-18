@@ -31,7 +31,7 @@
                     <div class="hpanel hgreen contact-panel">
                         <div class="panel-body">
                             <span class="label label-success pull-right">{{ sensor.status }}</span>
-                            <h4><a href=""> {{ sensor.type }} </a><small class="text-muted font-bold m-b-xs">{{ sensor.id }}</small></h4>
+                            <h4><a href=""> {{ sensor.name }} </a><small class="text-muted font-bold m-b-xs">{{ sensor.id }}</small></h4>
                             <p>
                                 {{ sensor.description }}
                             </p>
@@ -41,7 +41,7 @@
                                 <div class="col-md-12 border-right">
                                     <div class="contact-stat">
                                         <span>Most recent: </span>
-                                        <strong ng-if="sensor.type != 'Video Stream'">{{ sensor.data.value }}</strong>
+                                        <strong ng-if="sensor.name != 'Video Stream'">{{ sensor.data.value }}</strong>
                                         <img ng-src="{{ sensor.data.value }}" ng-if="sensor.type == 'Video Stream'" />
                                     </div>
                                 </div>

@@ -9,7 +9,7 @@
   function DevicesService($q, $resource, HiveEmpireConf) {
         function DevicesAPI() {
             return $resource(HiveEmpireConf.API_ENDPOINTS.default + '/v1/boxes/:uuid/', {}, {
-                'update': {'method': 'PUT'},
+                'update': {'method': 'PATCH'},
                 'query': {'isArray': false}
             });
         }

@@ -6,7 +6,7 @@
     .controller('DeviceListController', DeviceListController);
 
   /** @ngInject */
-  function DeviceListController($state, HivesService) {
+  function DeviceListController($state, SensorsService, HivesService) {
     var vm = this;
 
     var tmp_video = ['http://media.salon.com/2013/08/livebees-tiff-620x412.jpg', 'http://thumb7.shutterstock.com/display_pic_with_logo/2991562/323646689/stock-photo-plenty-of-bees-at-the-entrance-of-beehive-in-apiary-busy-bees-close-up-view-of-the-working-bees-323646689.jpg', 'https://i.ytimg.com/vi/wDB3_kfwyaE/maxresdefault.jpg', 'http://cdn1.arkive.org/media/5F/5FE0A0D5-1ACD-4F81-9CB5-C8A8AAC1820C/Presentation.Large/Honey-bee-bees-at-entrance-of-hive.jpg']
@@ -69,7 +69,9 @@
       },
     ];
 
-    vm.unassigned_devices_list = tmp_clone_sensors().concat(tmp_clone_sensors());
+    SensorsService.query().then(function (data) {
+      vm.unassigned_devices_list = data.results;
+    })
 
     HivesService.list().then(function (data) {
       vm.hives = data;
