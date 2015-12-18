@@ -6,7 +6,7 @@
     .controller('CreateHiveController', CreateHiveController);
 
   /** @ngInject */
-  function CreateHiveController($scope, HivesService, GeoLocationService, toastr) {
+  function CreateHiveController($scope, $state, HivesService, GeoLocationService, toastr) {
     var vm = this;
 
       vm.center = {};
@@ -120,9 +120,11 @@
 
     vm.onSubmit = function() {
       //console.log(JSON.stringify(vm.hive), null, 2);
+
       HivesService.create(vm.hive).then(
         function success(data) {
           toastr.success('Successfully created a new Hive', 'Success')
+          $state.go('edit-hive', {hive: data.uuid});
         },
         function error(err) {
           toastr.warning(err.data, 'Error on Submit')

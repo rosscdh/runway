@@ -12,8 +12,7 @@
         function HiveAPI() {
             return $resource(HiveEmpireConf.API_ENDPOINTS.default + '/v1/hives/:uuid/', {}, {
                 'update': {'method': 'PUT'},
-                'get': {'cache': true},
-                'query': {'cache': true, 'isArray': false}
+                'query': {'isArray': false}
             });
         }
 

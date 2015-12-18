@@ -121,19 +121,16 @@
     });
 
     vm.onSubmit = function() {
-      console.log(vm.hive)
+
       HivesService.update(vm.hive).then(
         function success(data) {
-          toastr.success('Successfully created a new Hive', 'Success')
+          toastr.success('Successfully updated this Hive', 'Success')
+          $state.go('hive-dashboard', {hive: data.uuid});
         },
         function error(err) {
           toastr.warning(err.data, 'Error on Submit')
         });
     }
 
-    activate();
-
-    function activate() {
-    }
   }
 })();
