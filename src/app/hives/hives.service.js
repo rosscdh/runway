@@ -69,6 +69,19 @@
                 }
             );
             return deferred.promise;
+          },
+          delete: function (uuid) {
+            var deferred = $q.defer();
+            var api = HiveAPI();
+            api.delete({'uuid': uuid}, {},
+                function success(response) {
+                    deferred.resolve(response.toJSON());
+                },
+                function error(err) {
+                    deferred.reject(err);
+                }
+            );
+            return deferred.promise;
           }
         }
       }]);

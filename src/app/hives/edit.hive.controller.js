@@ -6,7 +6,7 @@
     .controller('EditHiveController', CreateHiveController);
 
   /** @ngInject */
-  function CreateHiveController($scope, $state, HivesService, GeoLocationService, toastr) {
+  function CreateHiveController($scope, $state, $modal, HivesService, GeoLocationService, toastr) {
       var vm = this;
       var uuid = $state.params.hive;
 
@@ -130,6 +130,39 @@
         function error(err) {
           toastr.warning(err.data, 'Error on Submit')
         });
+    }
+
+    vm.deleteHive = function (event) {
+      event.preventDefault();
+
+      var modalInstance = $modal.open({
+        animation: $scope.animationsEnabled,
+        templateUrl: 'app/hives/modal-delete-hive.html',
+        controller: 'ModalInstanceController',
+        size: 'sm',
+        resolve: {
+          items: function () {
+            return {
+              'hive': vm.hive
+            };
+          }
+        }
+      });
+
+      modalInstance.result.then(function () {
+
+        HivesService.delete(uuid).then(
+          function success(data) {
+            toastr.success('Successfully deleted this Hive', 'Success')
+            $state.go('device-list');
+          },
+          function error(err) {
+            toastr.warning(err.data, 'Error on Delete')
+          });
+
+      }, function () {
+        toastr.info('Chose not to delete Hive', 'No Delete')
+      });
     }
 
   }
