@@ -124,7 +124,7 @@
       HivesService.create(vm.hive).then(
         function success(data) {
           toastr.success('Successfully created a new Hive', 'Success')
-          $state.go('edit-hive', {hive: data.uuid});
+          $state.go('hive-dashboard', {hive: data.uuid});
         },
         function error(err) {
           toastr.warning(err.data, 'Error on Submit')
