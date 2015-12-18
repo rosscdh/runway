@@ -14,7 +14,7 @@ angular.module('runway')
       $scope.startLogin = function() {
         if ($scope.loginForm.$valid) {
 
-          return AuthService.login($scope.credentials.email, $scope.credentials.password).then(
+          AuthService.login($scope.credentials.email, $scope.credentials.password).then(
             function success(data) {
 
               $rootScope.currentUser.setAccessToken(data.result.toJSON().token);

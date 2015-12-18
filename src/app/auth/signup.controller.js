@@ -17,9 +17,27 @@ angular.module('runway')
           AuthService.register($scope.credentials).then(
             function success(data) {
 
-              $rootScope.currentUser.setUser(data.result.toJSON());
-              toastr.info('You have registered with HiveEmpire', 'Registered')
-              $rootScope.goNext('/');
+              AuthService.login($scope.credentials.email, $scope.credentials.password).then(
+                function success(data) {
+
+                  $rootScope.currentUser.setAccessToken(data.result.toJSON().token);
+
+                  AuthService.me().then(
+                    function success (data) {
+                      $rootScope.currentUser.setUser(data.result.toJSON());
+                      toastr.info('You have registered with HiveEmpire', 'Registered')
+                      $rootScope.goNext('/');
+                    },
+                    function error (err) {
+                      toastr.warning(err, 'Authentication Failed')
+                    }
+                  );
+
+                },
+                function error(err) {
+                  toastr.error(err.data, 'Error')
+                }
+              );// End AuthService
 
             },
             function error(err) {
