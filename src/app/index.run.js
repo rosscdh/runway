@@ -6,7 +6,7 @@
     .run(runBlock);
 
   /** @ngInject */
-  function runBlock($rootScope, $state, $log, $q, $location, currentUserService, DevicesService, toastr) {
+  function runBlock($rootScope, $state, $log, $q, $location, currentUserService, DevicesService, PageMetaService, toastr) {
     $rootScope.currentUser = currentUserService;
 
     /**
@@ -19,6 +19,10 @@
       }, toState.data);
 
       var requireLogin = uriStateData.authorised;
+      // -------------------
+      // Setup the meta data
+      // -------------------
+      PageMetaService.setMeta('title', uriStateData.title);
 
       if (requireLogin === true && $rootScope.currentUser.isAuthenticated() === false) {
         event.preventDefault();

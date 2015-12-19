@@ -22,7 +22,8 @@
         templateUrl: 'app/auth/sign-up.html',
         controller: 'SignupController',
         data: {
-          authorised: false
+          authorised: false,
+          title: 'Sign Up for a HiveEmpire account'
         }
       })
         .state('sign-in', {
@@ -30,7 +31,8 @@
           templateUrl: 'app/auth/sign-in.html',
           controller: 'LoginController',
           data: {
-            authorised: false
+            authorised: false,
+            title: 'Sign into your HiveEmpire account'
           }
         })
         .state('logout', {
@@ -49,11 +51,8 @@
         templateUrl: 'app/me/my_account.html',
         controller: 'MyAccountController',
         data: {
-          authorised: true
-        },
-        ncyBreadcrumb: {
-          label: 'My Account',
-          parent: 'home'
+          authorised: true,
+          title: 'My Account details'
         }
       })
       .state('confirm-password-reset', {
@@ -61,21 +60,23 @@
         templateUrl: 'app/me/confirm_password_reset.html',
         controller: 'ConfirmPasswordResetController',
         data: {
-          authorised: false
+          authorised: false,
+          title: 'Reset your password'
         }
       })
       // ------------------------------------------
       // Overview - Dashboard
       // a view of all of my hives
       // ------------------------------------------
-      .state('overview-dashboard', {
-        url: '/dashboard',
-        templateUrl: 'app/dashboard/dashboard.html',
-        controller: 'DashboardController',
-        data: {
-          authorised: true
-        }
-      })
+      // .state('overview-dashboard', {
+      //   url: '/dashboard',
+      //   templateUrl: 'app/dashboard/dashboard.html',
+      //   controller: 'DashboardController',
+      //   data: {
+      //     authorised: true,
+      //     title: 'General Dashboard'
+      //   }
+      // })
       // ------------------------------------------
       // Hive - Dashboard
       // a view for a specific hives
@@ -86,7 +87,8 @@
         templateUrl: 'app/hives/view-hive.html',
         controller: 'ViewHiveController',
         data: {
-          authorised: true
+          authorised: true,
+          title: 'Hive details dashboard'
         }
       })
       .state('create-hive', {
@@ -94,7 +96,8 @@
         templateUrl: 'app/hives/create-hive.html',
         controller: 'CreateHiveController',
         data: {
-          authorised: true
+          authorised: true,
+          title: 'Register a new hive'
         }
       })
       .state('edit-hive', {
@@ -102,7 +105,8 @@
         templateUrl: 'app/hives/edit-hive.html',
         controller: 'EditHiveController',
         data: {
-          authorised: true
+          authorised: true,
+          title: 'Edit an existing hive'
         }
       })
       // ------------------------------------------
@@ -115,7 +119,8 @@
         templateUrl: 'app/devices/list-devices.html',
         controller: 'DeviceListController',
         data: {
-          authorised: true
+          authorised: true,
+          title: 'Available hives & devices'
         }
       })
       .state('create-device', {
@@ -123,7 +128,8 @@
         templateUrl: 'app/devices/create-device.html',
         controller: 'CreateDeviceController',
         data: {
-          authorised: true
+          authorised: true,
+          title: 'Register a new HiveEmpire-Sense device'
         }
       })
       .state('edit-device', {
@@ -131,7 +137,8 @@
         templateUrl: 'app/devices/edit-device.html',
         controller: 'EditDeviceController',
         data: {
-          authorised: true
+          authorised: true,
+          title: 'Edit your HiveEmpire-Sense device details'
         }
       })
       ;

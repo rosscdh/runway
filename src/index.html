@@ -2,9 +2,23 @@
 <html ng-app="runway">
   <head>
     <meta charset="utf-8">
-    <title>runway</title>
-    <meta name="description" content="">
+    <title ng-bind="{{ pageMetaService.getMeta('title') }}">HiveEmpire - App</title>
+    <meta name="description" content="{{ pageMetaService.getMeta('description') }}">
+    <meta name="keywords" content="{{ pageMetaService.getMeta('keywords') }}">
     <meta name="viewport" content="width=device-width">
+    <meta name="google-site-verification" content="" />
+    <meta name="fragment" content="!">
+    <base href="/">
+
+    <!-- SocialSharing -->
+    <meta property="og:title" content="{{ pageMetaService.getMeta('title') }}" />
+    <meta property="og:description" content="{{ pageMetaService.getMeta('description') }}" />
+    <meta property="og:image" content="{{ pageMetaService.getMeta('image') }}" />
+
+    <!-- Smartphone detection-->
+    <meta name="apple-itunes-app" content="">
+    <meta name="google-play-app" content="">
+    <meta name="author" content="HiveEmpire">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
 
     <!-- build:css({.tmp/serve,src}) styles/vendor.css -->
