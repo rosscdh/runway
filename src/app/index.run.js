@@ -12,7 +12,7 @@
     /**
     * Manage the change of state
     */
-    $rootScope.$on('$stateChangeStart', function(event, toState, toParams) {
+    $rootScope.$on('$stateChangeSuccess', function(event, toState, toParams) {
       var uriStateData = angular.extend({}, {
         authorised: false, // dont require login by default
         'container-class': 'container' // default

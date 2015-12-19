@@ -1,19 +1,19 @@
 <!doctype html>
 <html ng-app="runway">
-  <head>
+  <head ng-controller="PageMetaController as vm">
     <meta charset="utf-8">
-    <title ng-bind="{{ pageMetaService.getMeta('title') }}">HiveEmpire - App</title>
-    <meta name="description" content="{{ pageMetaService.getMeta('description') }}">
-    <meta name="keywords" content="{{ pageMetaService.getMeta('keywords') }}">
+    <title ng-bind="vm.PageMetaService.getMeta('title')">HiveEmpire - App</title>
+    <meta name="description" content="{{ vm.PageMetaService.getMeta('description') }}">
+    <meta name="keywords" content="{{ vm.PageMetaService.getMeta('keywords') }}">
     <meta name="viewport" content="width=device-width">
     <meta name="google-site-verification" content="" />
     <meta name="fragment" content="!">
     <base href="/">
 
     <!-- SocialSharing -->
-    <meta property="og:title" content="{{ pageMetaService.getMeta('title') }}" />
-    <meta property="og:description" content="{{ pageMetaService.getMeta('description') }}" />
-    <meta property="og:image" content="{{ pageMetaService.getMeta('image') }}" />
+    <meta property="og:title" content="{{ vm.PageMetaService.getMeta('title') }}" />
+    <meta property="og:description" content="{{ vm.PageMetaService.getMeta('description') }}" />
+    <meta property="og:image" content="{{ vm.PageMetaService.getMeta('image') }}" />
 
     <!-- Smartphone detection-->
     <meta name="apple-itunes-app" content="">
@@ -37,7 +37,7 @@
 
     <!-- Simple splash screen-->
     <div class="color-line"></div>
-
+{{PageMetaService.getMeta('title')}}
     <!--[if lt IE 10]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->

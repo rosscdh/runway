@@ -12,7 +12,11 @@
         url: '/',
         templateUrl: 'app/main/main.html',
         controller: 'MainController',
-        controllerAs: 'main'
+        controllerAs: 'main',
+        data: {
+          authorised: null,
+          title: 'HiveEmpire - App Home'
+        }
       })
       // ------------------------------------------
       // Authentication
