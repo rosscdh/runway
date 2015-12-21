@@ -39,7 +39,7 @@
     $rootScope.setUpHiveSenseDevice = function() {
       var deferred = $q.defer();
 
-      DevicesService.query().then(
+      DevicesService.list().then(
         function success(response) {
             if (response.count == 0) {
               // no devices found redirect to device setup page

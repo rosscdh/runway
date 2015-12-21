@@ -7,12 +7,14 @@
 
   /** @ngInject */
   function DevicesService($q, $resource, HiveEmpireConf) {
-        function DevicesAPI() {
-            return $resource(HiveEmpireConf.API_ENDPOINTS.default + '/v1/boxes/:uuid/', {}, {
-                'update': {'method': 'PATCH'},
-                'query': {'isArray': false}
-            });
-        }
+
+    function DevicesAPI() {
+        return $resource(HiveEmpireConf.API_ENDPOINTS.default + '/v1/boxes/:uuid/', {}, {
+            'update': {'method': 'PATCH'},
+            'query': {'isArray': false}
+        });
+    }
+
     return {
           list: function () {
             var deferred = $q.defer();
