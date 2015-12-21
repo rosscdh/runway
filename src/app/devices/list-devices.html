@@ -11,6 +11,7 @@
                 <div class="col-sm-12">
                     <div class="hpanel">
                         <div class="panel-body">
+                            <button ng-click="go($event)" ui-sref="create-device" class="btn btn-success btn-sm pull-right">Add HiveEmpire-Sense device</button>
                             <h3>Available Sensors</h3>
                             <div class="m-t-sm">
                                 <div class="input-group">
@@ -27,7 +28,7 @@
             <!-- Start Device Vehicle -->
             <div class="row">
                 <p>Drag &amp; drop the Sensors below onto it's Hive</p>
-                <div class="col-sm-5" ng-repeat="sensor in vm.unassigned_devices_list track by $index" style="cursor:pointer;">
+                <div class="col-sm-5" ng-repeat="sensor in vm.devices_list track by $index" style="cursor:pointer;">
                     <div class="hpanel hgreen contact-panel">
                         <div class="panel-body">
                             <span class="label label-success pull-right">{{ sensor.status }}</span>

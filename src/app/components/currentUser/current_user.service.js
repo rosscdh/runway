@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('runway')
-  .factory('currentUserService', [
+  .service('currentUserService', [
     '$log',
     '$rootScope',
     '$localStorage',
