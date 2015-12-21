@@ -7,74 +7,72 @@
     <div class="row" style="padding-top:25px;">
 
         <div class="col-sm-5">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="hpanel">
-                        <div class="panel-body">
-                            <button ng-click="go($event)" ui-sref="create-device" class="btn btn-success btn-sm pull-right">Add HiveEmpire-Sense device</button>
-                            <h3>Available Sensors</h3>
-                            <div class="m-t-sm">
-                                <div class="input-group">
-                                    <input class="form-control" type="text" placeholder="Search for a sensor">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-default"><i class="fa fa-search"></i></button>
-                                    </div>
-                                </div>
+
+            <div class="hpanel">
+                <div class="panel-body">
+                    <button ng-click="go($event)" ui-sref="create-device" class="btn btn-success btn-sm pull-right">Add device</button>
+                    <h3>HiveEmpire-Sense Devices</h3>
+                    <div class="m-t-sm">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Search for a hive">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default"><i class="fa fa-search"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <!-- Start Device Vehicle -->
-            <div class="row">
-                <p>Drag &amp; drop the Sensors below onto it's Hive</p>
-                <div class="col-sm-5" ng-repeat="sensor in vm.devices_list track by $index" style="cursor:pointer;">
+            <div class="" ng-repeat="device in vm.devices_list track by $index" style="cursor:pointer;">
+
+
                     <div class="hpanel hgreen contact-panel">
                         <div class="panel-body">
-                            <span class="label label-success pull-right">{{ sensor.status }}</span>
-                            <h4><a href=""> {{ sensor.name }} </a><small class="text-muted font-bold m-b-xs">{{ sensor.uuid }}</small></h4>
+                        <span class="label label-success">receiving</span>
+                            <img alt="" title="" class="img-circle m-b pull-right img-responsive" ng-src="/assets/images/tmp-istick.png">
+                            <h3><a href=""> {{ device.name }}</a></h3>
+                            <div class="text-muted font-bold m-b-xs">{{ device.slug }}</div>
                             <p>
-                                {{ sensor.description }}
+                                {{ row.remote_ip }}
                             </p>
                         </div>
-                        <div class="panel-footer contact-footer" style="min-height:120px;">
+                        <div class="panel-footer contact-footer">
+                            <!-- List of Device Sensors-->
                             <div class="row">
-                                <div class="col-md-12 border-right">
+                                <div class="col-md-4 border-right" ng-repeat="sensor in device.sensors track by $index">
                                     <div class="contact-stat">
-                                        <span>Most recent: </span>
-                                        <strong ng-if="sensor.name != 'Video Stream'">{{ sensor.value }}</strong>
-                                        <img ng-src="{{ sensor.data.value }}" ng-if="sensor.type == 'Video Stream'" />
+                                        <span>{{ sensor.name }}<br/><small>{{ sensor.uuid }}</small></span>
                                     </div>
                                 </div>
                             </div>
+                            <!-- END List of Device Sensors-->
                         </div>
                     </div>
-                </div>
+
             </div>
             <!-- END Device Vehicle -->
         </div>
 
         <div class="col-sm-7">
-            <div class="row">
-                <div class="col-sm-12">
-                    <div class="hpanel">
-                        <div class="panel-body">
-                            <button ng-click="go($event)" ui-sref="create-hive" class="btn btn-success btn-sm pull-right">Add Hive</button>
-                            <h3>Hives</h3>
-                            <div class="m-t-sm">
-                                <div class="input-group">
-                                    <input class="form-control" type="text" placeholder="Search for a hive">
-                                    <div class="input-group-btn">
-                                        <button class="btn btn-default"><i class="fa fa-search"></i></button>
-                                    </div>
-                                </div>
+
+            <div class="hpanel">
+                <div class="panel-body">
+                    <button ng-click="go($event)" ui-sref="create-hive" class="btn btn-success btn-sm pull-right">Add Hive</button>
+                    <h3>Hives</h3>
+                    <div class="m-t-sm">
+                        <div class="input-group">
+                            <input class="form-control" type="text" placeholder="Search for a hive">
+                            <div class="input-group-btn">
+                                <button class="btn btn-default"><i class="fa fa-search"></i></button>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
+
             <!-- Start Hives Vehicle -->
-            <div class="col-sm-12" ng-repeat="row in vm.hives.results track by $index" style="cursor:pointer;" ng-click="vm.goToHive(row)">
+            <div class="" ng-repeat="row in vm.hives.results track by $index" style="cursor:pointer;" ng-click="vm.goToHive(row)">
                 <div class="hpanel hyellow contact-panel">
                     <div class="panel-body">
                     <span class="label label-success">{{ row.status }}</span>
