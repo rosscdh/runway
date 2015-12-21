@@ -76,39 +76,20 @@
     <div class="col-md-12">
       <h3>Current Data</h3>
       <div class="hr-line-dashed"></div>
-      <div class="col-sm-6">
+      <div class="col-sm-6" ng-repeat="row in object.sensors track by $index">
           <div class="hpanel">
               <div class="panel-body text-center h-200">
                   <div class="stats-icon pull-right">
                       <i class="pe-7s-graph1 fa-4x"></i>
                   </div>
-
-                  <h1 class="m-xs">24</h1>
-
+                  <h1 class="m-xs">{{ row.value }}</h1>
                   <h3 class="font-extra-bold no-margins text-success">
-                      Hive Temperature &amp; Humidity
+                      {{ row.name }}
                   </h3>
-                  <small>Current temp is 24 and trending downwards.</small>
               </div>
           </div>
       </div>
 
-      <div class="col-sm-6">
-          <div class="hpanel">
-              <div class="panel-body text-center h-200">
-                  <div class="stats-icon pull-right">
-                      <i class="pe-7s-graph1 fa-4x"></i>
-                  </div>
-
-                  <h1 class="m-xs">64%</h1>
-
-                  <h3 class="font-extra-bold no-margins text-success">
-                      Hive Weight
-                  </h3>
-                  <small>Current temp is 64 and trending upwards.</small>
-              </div>
-          </div>
-      </div>
     </div>
   </div>
 
@@ -121,7 +102,7 @@
           <div class="hpanel">
               <div class="panel-body">
                   <div class="stats-title pull-left">
-                      <h4>{{ row.type }}</h4>
+                      <h4>{{ row.name }}</h4>
                   </div>
                   <div class="stats-icon pull-right">
                       <i class="{{ row.icon }} fa-4x"></i>
@@ -130,6 +111,7 @@
                       <small>
                           <p><b>Last Data:</b> 2015-12-16 09:23:67</p>
                           <p><b>Battery:</b> 80%</p>
+                          <p><b>Value:</b> {{ row.value }}</p>
                       </small>
                   </div>
               </div>

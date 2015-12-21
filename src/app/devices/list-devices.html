@@ -11,7 +11,7 @@
             <div class="hpanel">
                 <div class="panel-body">
                     <button ng-click="go($event)" ui-sref="create-device" class="btn btn-success btn-sm pull-right">Add device</button>
-                    <h3>HiveEmpire-Sense Devices</h3>
+                    <h3>Devices</h3>
                     <div class="m-t-sm">
                         <div class="input-group">
                             <input class="form-control" type="text" placeholder="Search for a hive">
@@ -72,26 +72,29 @@
             </div>
 
             <!-- Start Hives Vehicle -->
-            <div class="" ng-repeat="row in vm.hives.results track by $index" style="cursor:pointer;" ng-click="vm.goToHive(row)">
+            <div class="" ng-repeat="hive in vm.hives.results track by $index" style="cursor:pointer;" ng-click="vm.goToHive(hive)">
                 <div class="hpanel hyellow contact-panel">
                     <div class="panel-body">
-                    <span class="label label-success">{{ row.status }}</span>
-                        <img alt="{{ row.photo.alt }}" title="{{ row.photo.alt }}" class="img-circle m-b pull-right img-responsive" ng-src="{{ row.photo.url }}">
-                        <h3><a href=""> {{ row.name }}</a></h3>
-                        <div ng-show="row.address" class="text-muted font-bold m-b-xs">{{ row.address }}</div>
-                        <p>
-                            {{ row.description }}
+                        <span class="label label-success">{{ hive.status }}</span>
+                        <img alt="{{ hive.photo.alt }}" title="{{ hive.photo.alt }}" class="img-circle m-b pull-right img-responsive" ng-src="{{ hive.photo.url }}">
+                        <h3><a href=""> {{ hive.name }}</a></h3>
+                        <div ng-show="hive.address" class="text-muted font-bold m-b-xs">{{ hive.address }}</div>
+                        <p ng-show="hive.description">
+                            {{ hive.description }}
                         </p>
                     </div>
                     <div class="panel-footer contact-footer">
                         <div class="row">
-                            <div class="col-md-4 border-right" ng-repeat="sensor in row.sensors track by $index">
+
+                            <div class="col-md-4 border-right" ng-repeat="sensor in hive.sensors track by $index">
+                                <span class="label label-success pull-right">{{ sensor.status }}</span>
                                 <div class="contact-stat">
-                                    <span>{{ sensor.type }}<br/><small>{{ sensor.id }}</small></span>
-                                    <strong ng-if="sensor.type != 'Video Stream'">{{ sensor.data.value }}</strong>
-                                    <img ng-src="{{ sensor.data.value }}" ng-if="sensor.type == 'Video Stream'" />
+                                    <span>{{ sensor.name }}<br/><small>{{ sensor.uuid }}</small></span>
+                                    <strong ng-if="sensor.name != 'Video Stream'">{{ sensor.value }}</strong>
+                                    <img ng-src="{{ sensor.value }}" ng-if="sensor.name == 'Video Stream'" />
                                 </div>
                             </div>
+
                         </div>
                     </div>
                 </div>
