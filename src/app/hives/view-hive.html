@@ -63,13 +63,20 @@
   </div>
 
   <div class="row">
-    <div class="col-md-12">
       <h3>History Graph</h3>
       <div class="hr-line-dashed"></div>
-      <div class="col-md-offset-1 col-md-11">
-        <img class="img-responsive" src="/assets/images/tmp-history-graph.png" alt="Temporary graph" title="Temporary graph"/>
+      <div class="col-md-12">
+        <!-- <img class="img-responsive" src="/assets/images/tmp-history-graph.png" alt="Temporary graph" title="Temporary graph"/> -->
+        <canvas id="line" class="chart chart-line" chart-data="history_graph.data"
+                chart-labels="history_graph.labels" chart-legend="true" chart-series="history_graph.series"
+                chart-click="historyGraphOnClick">
+        </canvas>
+
+        <!-- <canvas id="radar" class="chart chart-radar"
+          chart-data="weight_chart.data" chart-labels="weight_chart.labels">
+        </canvas> -->
       </div>
-    </div>
+
   </div>
 
   <div class="row">

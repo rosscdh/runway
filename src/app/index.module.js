@@ -25,6 +25,7 @@
                         'satellizer',               // https://github.com/sahat/satellizer
                         'formly',
                         'formlyBootstrap',
+                        'chart.js',
                         'HiveEmpire.config',
                        ]);
 

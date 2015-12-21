@@ -62,6 +62,24 @@
               'fahrenheit': WeatherService.K2F($scope.weather.main.temp)
             };
         });
+
+        $scope.history_graph = {};
+        $scope.history_graph.labels = ["Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun", "Mon", "Tues", "Wed", "Thur", "Fri", "Sat", "Sun"];
+        $scope.history_graph.series = ['Temperature', 'Humidity'];
+        $scope.history_graph.data = [
+          [65, 59, 80, 81, 56, 55, 40, 65, 59, 80, 81, 56, 55, 40],
+          [28, 48, 40, 19, 86, 27, 90, 28, 48, 40, 19, 86, 27, 90]
+        ];
+        $scope.historyGraphOnClick = function (points, evt) {
+          console.log(points, evt);
+        };
+
+        // $scope.weight_chart = {};
+        // $scope.weight_chart.labels =["Front Left", "Back Left", "Back Right", "Front Right"];
+        // $scope.weight_chart.data = [
+        //   [23, 23, 40, 23],
+        //   // [28, 48, 40, 19]
+        // ];
       }
 
     }]);
