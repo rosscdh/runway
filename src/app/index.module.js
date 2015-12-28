@@ -26,6 +26,9 @@
                         'formly',
                         'formlyBootstrap',
                         'chart.js',
+                        //'angular-rickshaw',        // http://ngyewch.github.io/angular-rickshaw/#/home
+                        'nvd3',
+                        'angularMoment',
                         'HiveEmpire.config',
                        ]);
 

@@ -17,7 +17,7 @@
           return meta_data;
         },
         getMeta: function( name ) {
-          console.log(name + '='+ meta_data[name])
+          //console.log(name + '='+ meta_data[name])
           return meta_data[name] || '';
         },
         setMeta: function(meta_name, meta_value) {

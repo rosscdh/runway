@@ -1,4 +1,5 @@
 <div class="container">
+<link rel="stylesheet" href="http://ngyewch.github.io/angular-rickshaw/bower_components/rickshaw/rickshaw.min.css" />
 
   <div>
     <acme-navbar creation-date="main.creationDate"></acme-navbar>
@@ -64,17 +65,27 @@
 
   <div class="row">
       <h3>History Graph</h3>
-      <div class="hr-line-dashed"></div>
-      <div class="col-md-12">
-        <!-- <img class="img-responsive" src="/assets/images/tmp-history-graph.png" alt="Temporary graph" title="Temporary graph"/> -->
-        <canvas id="line" class="chart chart-line" chart-data="history_graph.data"
-                chart-labels="history_graph.labels" chart-legend="true" chart-series="history_graph.series"
-                chart-click="historyGraphOnClick">
-        </canvas>
 
-        <!-- <canvas id="radar" class="chart chart-radar"
-          chart-data="weight_chart.data" chart-labels="weight_chart.labels">
-        </canvas> -->
+      <select name="timeRange" id="timeRangeSelect" ng-model="timeRange">
+        <option value="30m">30 min ago</option>
+        <option value="1h">1 hour ago</option>
+        <option value="6h">6 hours ago</option>
+        <option value="1d">1 day ago</option>
+        <option value="2d">2 days ago</option>
+        <option value="5d">5 days ago</option>
+        <option value="7d">7 days ago</option>
+        <option value="2w">2 weeks ago</option>
+        <option value="6w">6 weeks ago</option>
+      </select>
+
+      <div class="hr-line-dashed"></div>
+
+      <div class="col-md-4">
+        <nvd3 options="graph.options" data="graph.temperature.data"></nvd3>
+      </div>
+
+      <div class="col-md-4">
+        <nvd3 options="graph.options" data="graph.humidity.data"></nvd3>
       </div>
 
   </div>
@@ -148,3 +159,4 @@
   </div>
 
 </div>
+
