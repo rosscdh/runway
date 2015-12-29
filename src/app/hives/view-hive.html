@@ -14,12 +14,14 @@
   </div>
 
   <div class="page-header">
-    <div class="col-md-3 pull-right">
+    <div class="well well-sm col-md-4 pull-right">
         <img alt="{{ object.photo.alt }}" class="img-rounded m-b pull-right img-responsive" ng-src="{{ object.photo.url }}">
     </div>
-    <h1>{{ object.name }}</h1>
-    <div ng-show="object.address" class="text-muted font-bold m-b-xs">{{ object.address }}</div>
-    <div><small>{{ object.description }}</small></div>
+    <div class="col-md-8">
+      <h1>{{ object.name }}</h1>
+      <div ng-show="object.address" class="text-muted font-bold m-b-xs">{{ object.address }}</div>
+      <div><small>{{ object.description }}</small></div>
+    </div>
   </div>
 
   <div class="clearfix"></div>
@@ -69,6 +71,7 @@
       <select name="timeRange" id="timeRangeSelect" ng-model="timeRange">
         <option value="30m">30 min ago</option>
         <option value="1h">1 hour ago</option>
+        <option value="2h">2 hours ago</option>
         <option value="6h">6 hours ago</option>
         <option value="1d">1 day ago</option>
         <option value="2d">2 days ago</option>
@@ -80,11 +83,11 @@
 
       <div class="hr-line-dashed"></div>
 
-      <div class="col-md-4">
+      <div class="col-md-6">
         <nvd3 options="graph.options" data="graph.temperature.data"></nvd3>
       </div>
 
-      <div class="col-md-4">
+      <div class="col-md-6">
         <nvd3 options="graph.options" data="graph.humidity.data"></nvd3>
       </div>
 

@@ -91,7 +91,7 @@
         templateUrl: 'app/hives/view-hive.html',
         controller: 'ViewHiveController',
         data: {
-          authorised: true,
+          authorised: null,
           title: 'Hive details dashboard'
         }
       })
