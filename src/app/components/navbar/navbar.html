@@ -8,7 +8,7 @@
 
     <div class="" id="bs-example-navbar-collapse-6">
       <ul class="nav navbar-nav">
-        <li ng-class="{'nav-item': true, active: is_active_nav_option('home')}"><a ui-sref="home">Home</a></li>
+        <li ng-class="{'nav-item': true, active: is_active_nav_option('home')}"><a href="http://hive-empire.com">Home</a></li>
         <li ng-show="is_authenticated" ng-class="{'nav-item': true, active: is_active_nav_option('device-list')}"><a ui-sref="device-list">Overview</a></li>
         <li ng-show="is_authenticated" ng-class="{'nav-item': true, active: is_active_nav_option('logout')}"><a ng-click="log_out()">Log Out</a></li>
         <li ng-hide="is_authenticated" ng-class="{'nav-item': true, active: is_active_nav_option('sign-in')}"><a ui-sref="sign-in">Sign In</a></li>
