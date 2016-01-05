@@ -25,10 +25,8 @@
                         'satellizer',               // https://github.com/sahat/satellizer
                         'formly',
                         'formlyBootstrap',
-                        'chart.js',
-                        //'angular-rickshaw',        // http://ngyewch.github.io/angular-rickshaw/#/home
-                        'nvd3',
                         'angularMoment',
+                        'nvd3ChartDirectives',
                         'HiveEmpire.config',
                        ]);
 

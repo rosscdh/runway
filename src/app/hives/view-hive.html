@@ -83,12 +83,22 @@
 
       <div class="hr-line-dashed"></div>
 
-      <div class="col-md-6">
-        <nvd3 options="graph.options" data="graph.temperature.data"></nvd3>
-      </div>
-
-      <div class="col-md-6">
-        <nvd3 options="graph.options" data="graph.humidity.data"></nvd3>
+      <div class="col-md-12">
+          <nvd3-line-chart
+                data="graph.data"
+                id="exampleId"
+                showXAxis="true"
+                showYAxis="true"
+                height="350"
+                tooltips="true"
+                interactive="true"
+                objectequality="false"
+                showLegend="true"
+                useInteractiveGuideline="true"
+                toolTipContent="toolTipContentFunction()"
+                xAxisTickFormat="xAxisTickFormat()">
+                <svg></svg>
+              </nvd3-line-chart>
       </div>
 
   </div>
