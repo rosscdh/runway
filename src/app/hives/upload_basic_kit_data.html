@@ -1,0 +1,72 @@
+<div class="container" ng-controller="EditHiveController as vm">
+
+    <div>
+        <acme-navbar creation-date="main.creationDate"></acme-navbar>
+    </div>
+
+
+    <div class="row" id="data-upload-ui">
+        <div class="col-md-12">
+            <div class="hpanel">
+                <div class="panel-heading">
+                    <a class="btn btn-default btn-sm" ui-sref="hive-dashboard({hive: vm.hive.uuid})"><i class="fa fa-chevron-left"></i></a>
+                    <h2>Upload Data - {{ vm.hive.name }}</h2>
+                </div>
+                <div class="panel-body">
+
+                    <div>
+                        <div class="drop-box"
+                             ngf-drop
+                             ngf-select
+                             ng-model="files"
+                             ngf-drag-over-class="'dragover'"
+                             ngf-multiple="false"
+                             ngf-allow-dir="false"
+                            accept="image/*,application/pdf"
+                            ngf-pattern="'application/csv'">Click here or Drop the data.csv file</div>
+                        <div ngf-no-file-drop>File Drag/Drop is not supported for this browser</div>
+
+                        <div class="row" ng-if="files">
+                            Files:
+                            <ul>
+                                <li ng-repeat="f in files" style="font:smaller">{{f.name}} {{f.$error}} {{f.$errorParam}}</li>
+                            </ul>
+                        </div>
+                        <div class="row" ng-if="log">
+                            Upload Log:
+                            <pre>{{log}}</pre>
+                        </div>
+                    </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+<style>
+#data-upload-ui .button {
+    -moz-appearance: button;
+    /* Firefox */
+    -webkit-appearance: button;
+    /* Safari and Chrome */
+    padding: 10px;
+    margin: 10px;
+    width: 70px;
+}
+#data-upload-ui .drop-box {
+    background: #F8F8F8;
+    border: 5px dashed #DDD;
+    width: 200px;
+    height: 65px;
+    text-align: center;
+    padding-top: 25px;
+    margin: 10px;
+}
+#data-upload-ui .dragover {
+    border: 5px dashed blue;
+}
+</style>

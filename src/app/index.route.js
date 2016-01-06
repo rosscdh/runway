@@ -113,6 +113,16 @@
           title: 'Edit an existing hive'
         }
       })
+      .state('upload-basic-kit-hive-data', {
+        url: '/hives/:hive/basic-kit/upload',
+        templateUrl: 'app/hives/upload_basic_kit_data.html',
+        controller: 'UploadBasicKitDataController',
+        data: {
+          authorised: true,
+          title: 'Upload Basic Kit data for this hive'
+        }
+      })
+
       // ------------------------------------------
       // Sense - Devices
       // CRUD for the HiveEmpire-Sense devices
