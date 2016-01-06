@@ -9,6 +9,9 @@
       "auth": "http://localhost:8008"
     },
     "OPENWEATHERMAP_KEY": "64c40382be6874babf1a82de71eaf1e8",
+    "AWS": {
+      "ACCESS_KEY_ID": "AKIAIF76J6YUAN4UTFIA"
+    },
     "OAUTH_TOKENS": {
       "facebook": {
           "KEY": "",
