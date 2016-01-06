@@ -27,6 +27,7 @@
                         'formlyBootstrap',
                         'angularMoment',
                         'nvd3ChartDirectives',
+                        'ngFileUpload',
                         'HiveEmpire.config',
                        ]);
 
